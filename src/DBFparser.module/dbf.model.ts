@@ -1,6 +1,6 @@
 import { Column, DataType, Model, Table } from 'sequelize-typescript';
 
-@Table({ tableName: 'dbfData' })
+@Table({ tableName: 'dbfData', createdAt: false, updatedAt: false })
 export class DbfRecord extends Model<DbfRecord> {
   @Column({
     type: DataType.INTEGER,
