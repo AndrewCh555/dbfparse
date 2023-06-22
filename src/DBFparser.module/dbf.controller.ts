@@ -9,8 +9,8 @@ import {
 } from '@nestjs/common';
 import { UploadFileDto } from './dto/upload-file.dto';
 import { ApiConsumes } from '@nestjs/swagger';
-import { FileInterceptor } from '@nestjs/platform-express';
 import { DbfService } from './dbf.service';
+import { SingleFileInterceptor } from '../shared/interceptors/fastify-file.interseptor';
 
 @Controller()
 export class DbfController {
@@ -19,7 +19,7 @@ export class DbfController {
   @Post('upload')
   @HttpCode(HttpStatus.OK)
   @ApiConsumes('multipart/form-data')
-  @UseInterceptors(FileInterceptor('file'))
+  @UseInterceptors(SingleFileInterceptor('file'))
   async uploadFile(
     @Body() body: UploadFileDto,
     @UploadedFile() file: Express.Multer.File,

@@ -1,14 +1,13 @@
 import { Module } from '@nestjs/common';
-import { SequelizeModule } from '@nestjs/sequelize';
-import { DbfRecord } from './dbf.model';
 import { DbfController } from './dbf.controller';
 import { DbfService } from './dbf.service';
 import { DbfRecordRepository } from './dbf.record.repository';
+import { PrismaService } from '../prisma.service';
 
 @Module({
-  imports: [SequelizeModule.forFeature([DbfRecord])],
+  imports: [],
   controllers: [DbfController],
-  providers: [DbfService, DbfRecordRepository],
+  providers: [DbfService, DbfRecordRepository, PrismaService],
   exports: [DbfService, DbfRecordRepository],
 })
 export class DbfModule {}

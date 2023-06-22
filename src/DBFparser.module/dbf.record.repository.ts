@@ -1,18 +1,15 @@
-import { InjectModel } from '@nestjs/sequelize';
-import { DbfRecord } from './dbf.model';
+import { Injectable } from '@nestjs/common';
 import { CreateRecordDto } from './dto/create-record.dto';
+import { PrismaService } from '../prisma.service';
+import { DbfRecord } from '@prisma/client';
 
+@Injectable()
 export class DbfRecordRepository {
-  constructor(
-    @InjectModel(DbfRecord)
-    private readonly data: typeof DbfRecord,
-  ) {}
+  constructor(private prisma: PrismaService) {}
 
-  async create(row: CreateRecordDto): Promise<DbfRecord> {
-    try {
-      return await this.data.create({ ...row });
-    } catch (err) {
-      console.log(err);
-    }
+  async create(data: CreateRecordDto): Promise<DbfRecord> {
+    return this.prisma.dbfRecord.create({
+      data,
+    });
   }
 }
