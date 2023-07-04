@@ -10,7 +10,7 @@ export class DbfService {
 
   async upload(file): Promise<void> {
     try {
-      const datatable: DataTable = Dbf.read(file.buffer);
+      const datatable: DataTable = Dbf.read(file);
       if (datatable) {
         const promises = datatable.rows.map((row: any) => {
           const data = CreateRecordDto.mapFrom(row);

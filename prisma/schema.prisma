@@ -15,3 +15,66 @@ model DbfRecord {
   preis    Int?
   kname    String? @db.VarChar(255)
 }
+
+model LiveComService {
+  id                 Int     @id @default(autoincrement())
+  personalAccount    String  @db.VarChar(255)
+  serviceCode        String  @db.VarChar(255)
+  paymentDate        String  @db.VarChar(255)
+  paymentPeriodFrom  String  @db.VarChar(255)
+  sum                Int
+  paymentPeriodTo    String  @db.VarChar(255)
+}
+
+model KVBO {
+  id          Int     @id @default(autoincrement())
+  payerIdent  String  @db.VarChar(255)
+  fio         String  @db.VarChar(255)
+  streetCode  String  @db.VarChar(255)
+  street      String  @db.VarChar(255)
+  building    String  @db.VarChar(255)
+  flat        String  @db.VarChar(255)
+  service     String  @db.VarChar(255)
+  serviceCode String  @db.VarChar(255)
+  ls          String  @db.VarChar(255)
+  sum         Int
+  year        String  @db.VarChar(255)
+  month       String  @db.VarChar(255)
+}
+
+model XVD {
+  id                 Int     @id @default(autoincrement())
+  personalAccount    String  @db.VarChar(255)
+  streetCode         String  @db.VarChar(255)
+  street             String  @db.VarChar(255)
+  building           String  @db.VarChar(255)
+  flat               String  @db.VarChar(255)
+  serviceCode        String  @db.VarChar(255)
+  sum                Int
+  sum1               Int
+  sum2               Int
+  code               Int
+  code1              Int
+  code2              Int
+  code3              Int
+  city               String  @db.VarChar(255)
+}
+
+model XTC {
+  id        Int     @id @default(autoincrement())
+  rashet    String  @db.VarChar(255)
+  fio       String  @db.VarChar(255)
+  misto     String  @db.VarChar(255)
+  tip       String  @db.VarChar(255)
+  adr       String  @db.VarChar(255)
+  dom       String  @db.VarChar(255)
+  kv        String  @db.VarChar(255)
+  bkv       String  @db.VarChar(255)
+  vusl      String  @db.VarChar(255)
+  saldot    Int
+}
+
+model fileName {
+  id         Int     @id @default(autoincrement())
+  fileName   String  @db.VarChar(255)
+}
